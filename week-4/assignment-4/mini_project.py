@@ -31,7 +31,7 @@ for i, student in enumerate(students):
     high_score_list.append(student["name"])
 
 
-print (f"Top scorer: {students[top_scorer_index]["name"]} ({students[top_scorer_index]["score"]})")
+print (f"Top scorer: {students[top_scorer_index]['name']} ({students[top_scorer_index]['score']})")
 
 average_class_score =  class_score/len(students)
 print (f"Class average: {average_class_score:.2f}")
