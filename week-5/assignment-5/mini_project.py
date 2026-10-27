@@ -11,6 +11,7 @@ while True:
   choice = input ("Choose an option (1-5):")
 
   if choice == "5":
+    print ("Bye-bye")
     break
 
   elif choice == "1":
