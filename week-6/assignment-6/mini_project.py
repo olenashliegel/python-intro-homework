@@ -1,28 +1,28 @@
 def find_min(numbers):
   """Return the smallest number in the list."""
-  min_number=numbers[0]
+  min_number = numbers[0]
   for i in range (1, len(numbers)):
-    if numbers [i]<=min_number:
-      min_number=numbers[i]
+    if numbers [i] < min_number:
+      min_number = numbers[i]
   return min_number
 
 def find_max(numbers):
   """Return the largest number in the list."""
-  max_number=numbers[0]
+  max_number = numbers[0]
   for i in range(1, len(numbers)):
-    if numbers [i]>=max_number:
-      max_number=numbers[i]
+    if numbers [i] > max_number:
+      max_number = numbers[i]
   return max_number
 
 def bubble_sort(numbers):
   """Return a new sorted list without changing the original."""
-  shallow_numbers= numbers.copy()
+  shallow_numbers = numbers.copy()
   is_swapped = True
   while is_swapped == True:
     is_swapped = False
-    for i in range(len(shallow_numbers)-1):
-      if shallow_numbers[i] > shallow_numbers [i + 1]:
-        shallow_numbers [i], shallow_numbers [i + 1] = shallow_numbers [i + 1], shallow_numbers [i]
+    for i in range(len(shallow_numbers) - 1):
+      if shallow_numbers[i] > shallow_numbers[i + 1]:
+        shallow_numbers[i], shallow_numbers[i + 1] = shallow_numbers[i + 1], shallow_numbers[i]
         is_swapped = True
   return shallow_numbers
 
