@@ -1,6 +1,7 @@
-import os
+import argparse
 import csv
 from datetime import datetime
+import os
 
 
 def read_data_from_csv(path):
@@ -58,6 +59,12 @@ def display_all_categories(set_of_categories):
     return categories_string
 
 
+def create_default_food_report(expenses):
+    category_expenses = filter_list_by_category(expenses, "food")
+    total_amount = calculate_total_amount(category_expenses)
+    write_result_to_file(category_expenses, total_amount, "food")
+
+
 def main(expenses):
     set_of_categories = create_set_of_categories(expenses)
     while True:
@@ -74,7 +81,6 @@ def main(expenses):
             )
         else:
             break
-    convert_amount_to_float(expenses)
     category_expenses = filter_list_by_category(expenses, category)
     total_amount = calculate_total_amount(category_expenses)
     write_result_to_file(category_expenses, total_amount, category)
@@ -86,4 +92,15 @@ if __name__ == "__main__":
         print("expenses.csv doesn't exist. Please make sure that file exist")
     else:
         expenses = read_data_from_csv(expenses_path)
-        main(expenses)
+        convert_amount_to_float(expenses)
+        parser = argparse.ArgumentParser(description="Type of program to run")
+        parser.add_argument(
+            "--interactive",
+            action="store_true",
+            help="If true - program is interactive. If false - program is non interactive",
+        )
+        args = parser.parse_args()
+        if args.interactive:
+            main(expenses)
+        else:
+            create_default_food_report(expenses)
